@@ -11,9 +11,9 @@ export default function ProgressTracker({ completedCount }: ProgressTrackerProps
   const completionPercentage = Math.round((completedCount / totalQuestions) * 100);
 
   // Group by category
-  const categoryStats = mockHearingQnA.reduce((acc, item) => {
+  const categoryStats = mockHearingQnA.reduce((acc: Array<{ name: string; total: number; completed: number }>, item: typeof mockHearingQnA[number]) => {
     const category = item.category;
-    const existing = acc.find((c) => c.name === category);
+    const existing = acc.find((c: { name: string; total: number; completed: number }) => c.name === category);
     if (existing) {
       existing.total += 1;
     } else {
@@ -80,7 +80,7 @@ export default function ProgressTracker({ completedCount }: ProgressTrackerProps
         <h3 className="text-lg font-semibold text-slate-900 mb-4">카테고리별 진행도</h3>
         
         <div className="space-y-4">
-          {categoryStats.map((category) => (
+          {categoryStats.map((category: { name: string; total: number; completed: number }) => (
             <div key={category.name} className="space-y-2">
               <div className="flex justify-between text-sm">
                 <span className="font-medium text-slate-900">{category.name}</span>

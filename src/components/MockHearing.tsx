@@ -82,7 +82,7 @@ export default function MockHearing({ onQuestionCompleted }: MockHearingProps) {
         <Textarea
           placeholder="여기에 당신의 답변을 입력하세요..."
           value={userAnswer}
-          onChange={(e) => setUserAnswer(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setUserAnswer(e.target.value)}
           disabled={showAnswer}
           className="min-h-32 resize-none"
         />
@@ -118,7 +118,7 @@ export default function MockHearing({ onQuestionCompleted }: MockHearingProps) {
             <div className="mt-4 p-4 bg-white rounded-lg border border-green-200">
               <h4 className="font-semibold text-slate-900 mb-2">💡 답변 팁</h4>
               <ul className="space-y-2 text-sm text-slate-700">
-                {currentQnA.tips.map((tip, idx) => (
+                {currentQnA.tips.map((tip: string, idx: number) => (
                   <li key={idx} className="flex gap-2">
                     <span className="text-green-600 font-bold">•</span>
                     <span>{tip}</span>

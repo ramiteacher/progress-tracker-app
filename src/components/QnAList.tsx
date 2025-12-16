@@ -8,7 +8,7 @@ export default function QnAList() {
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   // Group by category
-  const groupedQnA = mockHearingQnA.reduce((acc, item) => {
+  const groupedQnA = mockHearingQnA.reduce((acc: Record<string, typeof mockHearingQnA>, item: typeof mockHearingQnA[number]) => {
     const category = item.category;
     if (!acc[category]) {
       acc[category] = [];
@@ -34,7 +34,7 @@ export default function QnAList() {
             </h3>
 
             <div className="space-y-3">
-              {groupedQnA[category].map((item) => (
+              {groupedQnA[category].map((item: typeof mockHearingQnA[number]) => (
                 <Card
                   key={item.id}
                   className="overflow-hidden border-l-4 border-l-blue-500 hover:shadow-md transition-shadow"
@@ -74,7 +74,7 @@ export default function QnAList() {
                             💡 답변 팁
                           </h4>
                           <ul className="space-y-1">
-                            {item.tips.map((tip, idx) => (
+                            {item.tips.map((tip: string, idx: number) => (
                               <li key={idx} className="text-sm text-slate-700 flex gap-2">
                                 <span className="text-blue-600 font-bold flex-shrink-0">•</span>
                                 <span>{tip}</span>
